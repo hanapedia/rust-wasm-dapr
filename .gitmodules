@@ -1,0 +1,6 @@
+[submodule "samples"]
+	path = samples
+	url = git@github.com:dapr/samples.git
+[submodule "dapr-sdk-wasi"]
+	path = dapr-sdk-wasi
+	url = git@github.com:second-state/dapr-sdk-wasi.git
