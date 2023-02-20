@@ -7,4 +7,4 @@ edition = "2021"
 anyhow = "1.0"
 hyper_wasi = { version = "0.15", features = ["full"] }
 tokio_wasi = { version = "1.21", features = ["rt", "macros", "net", "time"]}
-dapr_sdk_wasi = { path = "../../dapr-sdk-wasi/" }
+dapr_sdk_wasi = { path = "../dapr-sdk-wasi/" }

@@ -3,7 +3,8 @@ services:
   echo-service:
     image: hiroki11hanada/wasm-dapr-echo
     build:
-      context: echo
+      context: .
+      dockerfile: echo.Dockerfile
     platform: wasi/wasm32
     runtime: io.containerd.wasmedge.v1
     ports:
@@ -53,5 +54,44 @@ services:
       - "6379:6379"
     networks:
       - hello-dapr
+
+  tests-service:
+    image: hiroki11hanada/wasm-dapr-tests
+    build:
+      context: .
+      dockerfile: tests.Dockerfile
+    platform: wasi/wasm32
+    runtime: io.containerd.wasmedge.v1
+    networks:
+      - hello-dapr
+  tests-dapr:
+    image: "daprio/daprd:edge"
+    ports:
+      - "3501:3502"
+    command: 
+      - "./daprd"
+      - "-app-id"
+      - "tests-service" 
+      - "-dapr-http-port"
+      - "3502"
+      - "-placement-host-address"
+      - "placement:50006"
+      - "-resources-path" 
+      - "/components"
+      - "-log-level"
+      - "debug"
+      # - "-dapr-public-port"
+      # - "3502"
+    volumes:
+        - "./config/:/components"
+    depends_on:
+      - tests-service
+      - redis
+    networks:
+      - hello-dapr
+    # network_mode: "service:tests-service"
+
 networks:
     hello-dapr:
+      driver: bridge
+      name: hello-dapr
