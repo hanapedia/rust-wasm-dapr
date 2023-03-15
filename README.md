@@ -9,7 +9,7 @@ The end product of this project is a full-stack web app for my blogs.
 - Display blogs (server-side rendered)
 
 ## Tech stack 
-![tech stack](./docs/wasm_tech_stack-application_topology.drawio.png)
+![tech stack](./assets/wasm_tech_stack-application_topology.drawio.png)
 ### Frontend
 - Leptos
 ### Backend
@@ -22,5 +22,9 @@ The end product of this project is a full-stack web app for my blogs.
 - service discovery will be handled by Dapr
 - ingress will be handled by ingress controller
 - To make it publically accessible, use AWS gateway as proxy
-![infra](./docs/wasm_tech_stack-network-topology-service-mesh.drawio.png)
+![infra](./assets/wasm_tech_stack-network-topology-service-mesh.drawio.png)
   
+## Todos
+[x] run leptos app in docker
+[ ] connect leptos server and wasm servers with dapr
+[ ] implement application features
