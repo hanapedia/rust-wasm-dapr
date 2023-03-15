@@ -1,0 +1,6 @@
+**/target/**
+!target/server/release/ssr_modes_axum
+.gitignore
+LICENCE
+README.md
+Cargo_old.toml

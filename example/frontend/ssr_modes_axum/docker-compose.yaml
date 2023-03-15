@@ -1,0 +1,12 @@
+version: "3"
+services:
+  leptos-ssr:
+    image: hiroki11hanada/leptos-ssr
+    build:
+      context: .
+      dockerfile: withbuild.Dockerfile
+    environment:
+      - LEPTOS_OUTPUT_NAME=ssr_modes_axum
+      - LEPTOS_SITE_ADDR=0.0.0.0:3000
+    ports:
+      - "4000:3000"
